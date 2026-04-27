@@ -1,0 +1,10 @@
+node_modules/
+
+*.swo
+coverage/
+*.tsbuildinfo
+dist/
+build/
+.env
+*.js.map
+out/
