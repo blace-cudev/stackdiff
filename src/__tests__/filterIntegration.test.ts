@@ -39,4 +39,13 @@ describe('filter + preset integration', () => {
     expect(result).toHaveLength(1);
     expect(result[0].name).toBe('typescript');
   });
+
+  it('returns empty array when no entries match the preset', () => {
+    // The sample diff has no production non-breaking updates that are also added;
+    // use a combination that yields zero results to verify filterDiff handles it gracefully.
+    const opts = resolvePreset('prod-breaking', { changeType: 'added' });
+    const result = filterDiff(sampleDiff, opts);
+    expect(result).toHaveLength(0);
+    expect(Array.isArray(result)).toBe(true);
+  });
 });
